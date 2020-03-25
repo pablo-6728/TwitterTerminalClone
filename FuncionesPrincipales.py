@@ -14,7 +14,7 @@ def iniciar_sesion(user):
                 User_check = True
 
     if User_check == True:      #usuario valido
-        return print("Inicio de sesion correcto!")
+        return True
 
     else:       #el usuario no es valido
         user_input= input("Login Incorrecto \n[1]Intentar otra vez\n[2]Registrarse\n")

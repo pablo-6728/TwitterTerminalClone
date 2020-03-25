@@ -1,6 +1,7 @@
 # pantalla de inicio que maneja la estructura de la app
 import FuncionesPrincipales
-menu=1
+menu = 1
+feed = False
 
 while menu!="0":
     usuario = ""
@@ -10,7 +11,7 @@ while menu!="0":
 
     if user_input == "1":
         usuario = input("Nombre de usuario: ")
-        FuncionesPrincipales.iniciar_sesion(usuario)
+        feed = FuncionesPrincipales.iniciar_sesion(usuario)
 
     elif user_input == "2":
         FuncionesPrincipales.registrarse()
@@ -22,3 +23,5 @@ while menu!="0":
     else:
         print("Input invalido")
 
+    if feed == True:
+        print("INICIO DE SESION CORRECTO!!!")
