@@ -13,18 +13,34 @@ def iniciar_sesion(user):
             if user == column[0]:
                 User_check = True
 
-
-    if User_check == True:
+    if User_check == True:      #usuario valido
         return print("Inicio de sesion correcto!")
-    else:
-        user_input= input("Login Incorrecto \n[1]Intentar otra vez\n[2]Registrarse\n[0]Salir")
+
+    else:       #el usuario no es valido
+        user_input= input("Login Incorrecto \n[1]Intentar otra vez\n[2]Registrarse\n")
         if user_input == "1":
-            print("a.kdsfaksj")
+            print("\n")
+
         elif user_input =="2":
-            print("2")
+            registrarse()
+
 
 
 def registrarse():
-    pass
+    new_user = input("\nNombre de usuario: ")
+    user_check = False
 
+    with open("usuarios.csv") as file: #revisar si el usuario existe
+        reader = csv.reader(file)
+
+        for column in reader:
+            if new_user == column[0]:
+                user_check = True
+
+    if user_check == True:
+        return print("El usuario ya existe")
+
+    else:
+        with open("usuarios.csv", "a") as file: #append nuevo usuario
+           file.write("\n" + new_user)
 

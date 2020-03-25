@@ -2,7 +2,7 @@
 import FuncionesPrincipales
 menu=1
 
-while menu!=0 or menu!="0":
+while menu!="0":
     usuario = ""
     user_input = 0
 
@@ -12,11 +12,13 @@ while menu!=0 or menu!="0":
         usuario = input("Nombre de usuario: ")
         FuncionesPrincipales.iniciar_sesion(usuario)
 
-    if user_input == "2":
+    elif user_input == "2":
         FuncionesPrincipales.registrarse()
 
-    if user_input == "0":
-        menu == user_input
+    elif user_input == "0":
+        menu = user_input
+
 
     else:
         print("Input invalido")
+
