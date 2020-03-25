@@ -26,4 +26,4 @@ while menu!="0":
 
     if feed == True:
         print("INICIO DE SESION CORRECTO!!!") #manda al feed principal
-        Interface.post()
+        Interface.post(usuario)
