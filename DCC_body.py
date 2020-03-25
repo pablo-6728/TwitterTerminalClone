@@ -4,7 +4,7 @@ import Interface
 menu = 1
 feed = False
 
-while menu!="0":
+while menu!="0" and feed == False:
     usuario = ""
     user_input = 0
 
@@ -25,10 +25,11 @@ while menu!="0":
     else:
         print("Input invalido")
 
-    if feed == True:
+
+while feed == True and menu!=0:
         print("INICIO DE SESION CORRECTO!!!") #manda al feed principal
 
-        user_input = input("[1]Post\n[2]Revisar feed\n[0]Salir")
+        user_input = input("[1]Post\n[2]Revisar feed\n[0]Salir\n")
 
         if user_input == "1":
             Interface.post(usuario)
