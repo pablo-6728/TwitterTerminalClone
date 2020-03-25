@@ -3,7 +3,6 @@ import csv
 
 user_input = 0
 
-
 def iniciar_sesion(user):
     User_check = False
 
@@ -16,13 +15,16 @@ def iniciar_sesion(user):
 
 
     if User_check == True:
-        print("Inicio de sesion correcto!")
+        return print("Inicio de sesion correcto!")
     else:
-        print("Login Incorrecto")
+        user_input= input("Login Incorrecto \n[1]Intentar otra vez\n[2]Registrarse\n[0]Salir")
+        if user_input == "1":
+            print("a.kdsfaksj")
+        elif user_input =="2":
+            print("2")
 
 
-
-def Registrarse():
+def registrarse():
     pass
 
 

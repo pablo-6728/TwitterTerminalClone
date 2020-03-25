@@ -1,18 +1,22 @@
 # pantalla de inicio que maneja la estructura de la app
 import FuncionesPrincipales
+menu=1
 
-def app_DCCahuin():
+while menu!=0 or menu!="0":
     usuario = ""
     user_input = 0
 
-    user_input = int(
-        input("Bienvenido a DCCahuin!!\nSeleccione una opcion:\n[1]Iniciar Sesion\n[2]Registrar usuario\n[0]Salir\n"))
+    user_input = input("Bienvenido a DCCahuin!!\nSeleccione una opcion:\n[1]Iniciar Sesion\n[2]Registrar usuario\n[0]Salir\n")
 
-    if user_input == 1:
+    if user_input == "1":
         usuario = input("Nombre de usuario: ")
-
         FuncionesPrincipales.iniciar_sesion(usuario)
 
+    if user_input == "2":
+        FuncionesPrincipales.registrarse()
 
+    if user_input == "0":
+        menu == user_input
 
-app_DCCahuin()
+    else:
+        print("Input invalido")
