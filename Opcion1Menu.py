@@ -30,17 +30,24 @@ def registrarse():
     new_user = input("\nNombre de usuario: ")
     user_check = False
 
-    with open("usuarios.csv") as file: #revisar si el usuario existe
-        reader = csv.reader(file)
+    alphanumeric = new_user.isalnum() #revisa si el nombre es alfanumerico
+    name_lenght = len(new_user)
 
-        for column in reader:
-            if new_user == column[0]:
-                user_check = True
+    if alphanumeric == True and name_lenght >= 8:
 
-    if user_check == True:
-        return print("El usuario ya existe")
+        with open("usuarios.csv") as file: #revisar si el usuario existe
+            reader = csv.reader(file)
+
+            for column in reader:
+                if new_user == column[0]:
+                    user_check = True
+
+        if user_check == True:
+            return print("El usuario ya existe")
+
+        else:
+            with open("usuarios.csv", "a") as file: #append nuevo usuario
+                file.write("\n" + new_user)
 
     else:
-        with open("usuarios.csv", "a") as file: #append nuevo usuario
-           file.write("\n" + new_user)
-
+        return print("ERROR: el nombre de usuario tienen que tener 8 caracteres alfanumericos")
