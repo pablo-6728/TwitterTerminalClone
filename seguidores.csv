@@ -4,3 +4,5 @@ Desiaparici ́on,ElJefe,Carrer ́ın
 La Banda Elasticidad,ElJefe,Carrer ́ın,Capit ́an Magma
 ElJefe
 Joseph Joestar
+
+    FuncionesPrincipales.IniciarSesion(usuario, contrasena)
