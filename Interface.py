@@ -22,5 +22,19 @@ def post(user):  # permite hacer posts
         return print("Tu post no puede estar vacio")
 
 
-def feed():
-    pass
+def feed(user):
+    post_feed = []
+    i = 0
+    with open("seguidores.csv", "r") as file:
+
+        reader = csv.reader(file)
+
+
+        for row in reader:
+            if row[0] == user:
+                post_feed = row             #Hasta aqui se pueden meter los seguidores en el array de post feed con lenght de todos los que quepan
+
+        print(len(post_feed))
+
+
+

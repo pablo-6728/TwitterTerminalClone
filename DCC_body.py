@@ -35,7 +35,7 @@ while feed == True and menu!=0:
             Interface.post(usuario)
 
         elif user_input =="2":
-            pass
+            Interface.feed(usuario)
 
         elif user_input == "0":
             menu = 0
