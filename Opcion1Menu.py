@@ -49,5 +49,8 @@ def registrarse():
             with open("usuarios.csv", "a") as file: #append nuevo usuario
                 file.write("\n" + new_user)
 
+            with open("seguidores.csv", "a") as file: #append en seguidores
+                file.write("\n" + new_user + ",")
+
     else:
         return print("ERROR: el nombre de usuario tienen que tener 8 caracteres alfanumericos")
