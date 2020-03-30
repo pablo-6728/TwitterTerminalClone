@@ -1,6 +1,7 @@
 # feed, post y seguidos
 import datetime
 import csv
+import operator
 
 
 def post(user):  # permite hacer posts
@@ -24,7 +25,7 @@ def post(user):  # permite hacer posts
 
 def feed(user):
     post_feed = []
-    posts = []
+
 
     with open("seguidores.csv", "r") as file:
 
@@ -35,13 +36,18 @@ def feed(user):
             if row[0] == user:
                 post_feed = row
 
-    with open("posts.csv", "r") as file:
+    #tratemos de hacer el sort antes de imprimir
+    sort_fechas = open("posts.csv", "r")
 
-        reader = csv.reader(file)
+    csvr = csv.reader(sort_fechas, delimiter = ",")
 
-        for row in reader:
-            if row[0] in post_feed:
-                print(row)
+    sort = sorted(csvr, key=operator.itemgetter(1))
+
+
+    for row in sort:
+        if row[0] in post_feed:
+            print(row)
+
 
 
 
