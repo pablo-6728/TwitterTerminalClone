@@ -48,6 +48,35 @@ def feed(user):
         if row[0] in post_feed:
             print(row)
 
+def follow(user): #funcion para hacer follow
+
+    follow_user = input("Escribe el nombre de usuario de la persona que deseas seguir: ")
+
+    with open("seguidores.csv", "r") as file:
+        reader = csv.reader(file)
+        followed_users = []
+
+        for row in reader:
+            if user in row[0]:
+                followed_users = row
+                print(followed_users)
+
+
+                if follow_user in followed_users:    #ya se sigue a este usuario
+                    print("Ya sigues a este usuario")
+
+
+                else:       #este usuario no se sigue
+                    with open ("seguidores.csv", "a") as file:
+                        if user in row[0]:
+                            file.write(follow_user + ",")
+
+
+
+
+
+
+
 
 
 

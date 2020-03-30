@@ -29,13 +29,16 @@ while menu!="0" and feed == False:
 while feed == True and menu!=0:
         print("INICIO DE SESION CORRECTO!!!") #manda al feed principal
 
-        user_input = input("[1]Post\n[2]Revisar feed\n[0]Salir\n")
+        user_input = input("[1]Post\n[2]Revisar feed\n[3]Seguir\n[0]Salir\n")
 
         if user_input == "1":
             Interface.post(usuario)
 
         elif user_input =="2":
             Interface.feed(usuario)
+
+        elif user_input =="3":
+            Interface.follow(usuario)
 
         elif user_input == "0":
             menu = 0
