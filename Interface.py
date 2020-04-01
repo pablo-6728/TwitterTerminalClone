@@ -51,25 +51,45 @@ def feed(user):
 def follow(user): #funcion para hacer follow
 
     follow_user = input("Escribe el nombre de usuario de la persona que deseas seguir: ")
+    existing_user = False
 
-    with open("seguidores.csv", "r") as file:
+    with open("usuarios.csv", "rt") as file:         #revisar si el usuario existe
         reader = csv.reader(file)
-        followed_users = []
 
-        for row in reader:
-            if user in row[0]:
-                followed_users = row
-                print(followed_users)
+        for column in reader:
+            if follow_user in column:
+                existing_user = True
 
-
-                if follow_user in followed_users:    #ya se sigue a este usuario
-                    print("Ya sigues a este usuario")
+            else:
+                existing_user = False
 
 
-                else:       #este usuario no se sigue
-                    with open ("seguidores.csv", "a") as file:
-                        if user in row[0]:
-                            file.write(follow_user + ",")
+    if existing_user == True:
+
+        if follow_user == user:     #chequeo de uno mismo
+            print("No te puedes seguir a ti mismo #sad")
+
+        with open("seguidores.csv", "rt") as file:
+            reader = csv.reader(file)
+            followed_users = []
+
+            for row in reader:
+                if user in row[0]:
+                    followed_users = row
+                    print(followed_users)
+
+
+                    if follow_user in followed_users:    #ya se sigue a este usuario
+                        print("Ya sigues a este usuario")
+
+
+                    else:       #este usuario no se sigue
+                        with open ("seguidores.csv", "a") as file:
+                            if user in row[0]:
+                                file.write(follow_user + ",")
+
+    elif existing_user == False:
+        print("El usuario no existe")
 
 
 
