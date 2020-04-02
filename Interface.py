@@ -96,20 +96,9 @@ def follow(user):  # funcion para hacer follow
                 print(seguidores[index])
 
 
-            with open("seguidores.csv", "w", newline='') as file:
+            with open("seguidores.csv", "w", newline='') as file:           #se anade al csv de usuarios seguidos
                writer = csv.writer(file, delimiter = ',', quotechar='|', quoting=csv.QUOTE_MINIMAL )
                writer.writerows(seguidores)
-
-
-
-
-
-            #with open("seguidores.csv", "a") as file:
-             #   for index in range(len(seguidores)):
-              #      file.writelines(seguidores[index])
-               #     file.write("\n")
-
-
 
 
     elif existing_user == False:
