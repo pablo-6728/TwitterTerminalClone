@@ -30,7 +30,7 @@ def feed(user):
 
         reader = csv.reader(file)
 
-        for row in reader:  # los seguidores se guardan en posr feed desde el indice 1
+        for row in reader:  # los seguidores se guardan en post feed desde el indice 1
             if row[0] == user:
                 post_feed = row
 
@@ -65,22 +65,18 @@ def follow(user):  # funcion para hacer follow
         if follow_user == user:  # chequeo de uno mismo
             print("No te puedes seguir a ti mismo #sad")
 
-        with open("seguidores.csv", "rt") as file:
+        with open("seguidores.csv", "rt", newline='')as file:
             reader = csv.reader(file)
             followed_users = []
-            seguidores = []  # nuevo csv
+            seguidores = list(reader)  # nuevo csv
 
+
+        with open("seguidores.csv", "r") as file:
+            reader = csv.reader(file)
 
             for row in reader:
-                seguidores = row        #asignar en seguidores toda la lista de la data base
-                print(seguidores)
-
                 if user in row[0]:
                     followed_users = row
-                    print("///")
-                    print(followed_users)
-
-
 
 
         if follow_user in followed_users:  # ya se sigue a este usuario
@@ -88,8 +84,8 @@ def follow(user):  # funcion para hacer follow
 
 
         else:  # este usuario no se sigue
-            pass
-
+            print(seguidores)
+            print(followed_users)
 
     elif existing_user == False:
         print("El usuario no existe")
