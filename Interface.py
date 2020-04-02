@@ -84,8 +84,33 @@ def follow(user):  # funcion para hacer follow
 
 
         else:  # este usuario no se sigue
-            print(seguidores)
-            print(followed_users)
+            indice = seguidores.index(followed_users)
+
+            seguidores.remove(followed_users)
+            followed_users.append(follow_user)
+
+            seguidores.insert(indice, followed_users)
+
+            print(indice)
+            for index in range(len(seguidores)):
+                print(seguidores[index])
+
+
+            with open("seguidores.csv", "w", newline='') as file:
+               writer = csv.writer(file, delimiter = ',', quotechar='|', quoting=csv.QUOTE_MINIMAL )
+               writer.writerows(seguidores)
+
+
+
+
+
+            #with open("seguidores.csv", "a") as file:
+             #   for index in range(len(seguidores)):
+              #      file.writelines(seguidores[index])
+               #     file.write("\n")
+
+
+
 
     elif existing_user == False:
         print("El usuario no existe")
