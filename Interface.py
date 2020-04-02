@@ -58,7 +58,6 @@ def follow(user):  # funcion para hacer follow
             if follow_user in column:
                 existing_user = True
 
-    print(existing_user)
 
     if existing_user == True:
 
@@ -91,15 +90,11 @@ def follow(user):  # funcion para hacer follow
 
             seguidores.insert(indice, followed_users)
 
-            print(indice)
-            for index in range(len(seguidores)):
-                print(seguidores[index])
-
-
             with open("seguidores.csv", "w", newline='') as file:           #se anade al csv de usuarios seguidos
                writer = csv.writer(file, delimiter = ',', quotechar='|', quoting=csv.QUOTE_MINIMAL )
                writer.writerows(seguidores)
 
+        print("Ahora sigues a: " + follow_user)
 
     elif existing_user == False:
         print("El usuario no existe")
