@@ -98,3 +98,50 @@ def follow(user):  # funcion para hacer follow
 
     elif existing_user == False:
         print("El usuario no existe")
+
+
+def unfollow(user):
+    unfollow_user = input("Escribe el nombre de usuario de la persona que deseas dejar de seguir: ")
+    existing_user = False
+
+    with open("usuarios.csv", "rt") as file:  # revisar si el usuario existe
+        reader = csv.reader(file)
+
+        for column in reader:
+            if unfollow_user in column:
+                existing_user = True
+
+    if existing_user == True:
+
+        if unfollow_user == user:  # chequeo de uno mismo
+            print("No te puedes dejar de seguir a ti mismo, Todo bien en casa?")
+
+        with open("seguidores.csv", "rt", newline='')as file:
+            reader = csv.reader(file)
+            followed_users = []
+            seguidores = list(reader)  # nuevo csv
+
+        with open("seguidores.csv", "r") as file:
+            reader = csv.reader(file)
+
+            for row in reader:
+                if user in row[0]:
+                    followed_users = row
+
+        if unfollow_user in followed_users:  #Aqui esta el usuario que se quiere dejar de seguir
+
+            indice = seguidores.index(followed_users)
+
+            seguidores.remove(followed_users)
+            followed_users.remove(unfollow_user)
+
+            seguidores.insert(indice, followed_users)
+
+            with open("seguidores.csv", "w", newline='') as file:  # se anade al csv de usuarios seguidos
+                writer = csv.writer(file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                writer.writerows(seguidores)
+
+        print("Dejaste de seguir a: " + unfollow_user)
+
+    elif existing_user == False:
+        print("El usuario no existe...")

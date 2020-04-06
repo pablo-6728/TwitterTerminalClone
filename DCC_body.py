@@ -38,7 +38,11 @@ while feed == True and menu!=0:
             Interface.feed(usuario)
 
         elif user_input =="3":
-            Interface.follow(usuario)
+            user_input = input("[1] Seguir Usuarios\n[2]Dejar de seguir usuarios")
+            if user_input == "1":
+                Interface.follow(usuario)
+            elif user_input == "2":
+                Interface.unfollow(usuario)
 
         elif user_input == "0":
             menu = 0
