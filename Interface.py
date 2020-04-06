@@ -148,3 +148,32 @@ def unfollow(user):
 
     elif existing_user == False:
         print("El usuario no existe...")
+
+def borrarPosts(user):
+    with open("posts.csv", "rt") as file:
+        reader = csv.reader(file)
+        own_post = [[],[],[]]   #tus posts guardados
+        borrar_post = []        #mensaje a borrar
+        i = 0
+
+        print("Que post deseas borrar? Escriba el contenido del post: ")
+
+        for row in reader:
+            if user in row[0]:
+                own_post[i] = row
+                i+=1
+        print(own_post)
+
+
+        borrar_post = input()
+        print(borrar_post)
+
+
+    #with open("posts.csv", "rt") as file:
+     #   reader = csv.reader(file)
+      #  posts = list(reader)
+
+
+       # with open("seguidores.csv", "w", newline='') as file:  # se anade al csv de usuarios seguidos
+        #    writer = csv.writer(file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+         #   writer.writerows(posts)
