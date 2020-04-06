@@ -141,7 +141,10 @@ def unfollow(user):
                 writer = csv.writer(file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
                 writer.writerows(seguidores)
 
-        print("Dejaste de seguir a: " + unfollow_user)
+            print("Dejaste de seguir a: " + unfollow_user)
+
+        elif unfollow_user not in followed_users:
+            print("Tu no sigues a " + unfollow_user)
 
     elif existing_user == False:
         print("El usuario no existe...")
