@@ -153,27 +153,34 @@ def borrarPosts(user):
     with open("posts.csv", "rt") as file:
         reader = csv.reader(file)
         own_post = [[],[],[]]   #tus posts guardados
-        borrar_post = []        #mensaje a borrar
         i = 0
 
-        print("Que post deseas borrar? Escriba el contenido del post: ")
+        print("Que post deseas borrar?")
 
         for row in reader:
-            if user in row[0]:
-                own_post[i] = row
+            if user in row:
+                own_post.append(row)
                 i+=1
-        print(own_post)
+    i = 0
+    while i < len(own_post):
+        print(i)
+        print(own_post[i])
+        print("\n")
+        i+=1
+
+    try:
+        borrar = int(input("Escribe el numero que esta encima de tu post \n"))
+        with open("posts.csv", "rt") as file:       #borrar los posts
+            reader = csv.reader(file)
+            posts = list(reader)
+
+            print(posts.index(own_post[borrar]))
+            posts.remove(own_post[borrar])
 
 
-        borrar_post = input()
-        print(borrar_post)
+        with open("posts.csv", "w", newline='') as file:
+            writer = csv.writer(file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            writer.writerows(posts)
 
-
-    #with open("posts.csv", "rt") as file:
-     #   reader = csv.reader(file)
-      #  posts = list(reader)
-
-
-       # with open("seguidores.csv", "w", newline='') as file:  # se anade al csv de usuarios seguidos
-        #    writer = csv.writer(file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-         #   writer.writerows(posts)
+    except:
+        print("ERROR!! Intente de nuevo")
