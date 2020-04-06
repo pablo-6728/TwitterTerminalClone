@@ -18,8 +18,10 @@ def iniciar_sesion(user):
 
     else:       #el usuario no es valido
         user_input= input("Login Incorrecto \n[1]Intentar otra vez\n[2]Registrarse\n")
+
         if user_input == "1":
-            print("\n")
+            x = input("Ingrese usuario: ")
+            iniciar_sesion(x)
 
         elif user_input =="2":
             registrarse()
